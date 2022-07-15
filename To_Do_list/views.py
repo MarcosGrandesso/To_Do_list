@@ -1,4 +1,5 @@
 from multiprocessing import context
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from tasks.forms import tarefasForm
 from django.contrib import messages
@@ -6,6 +7,7 @@ from tasks.models import Prioridade, Tarefas
 from django.contrib.auth.models import User
 from tasks.models import Tarefas
 
+@login_required(login_url='login')
 def index(request):
     lista = Tarefas.objects.all()
 

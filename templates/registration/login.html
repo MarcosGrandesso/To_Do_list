@@ -63,22 +63,20 @@
         {% endfor %}
     {% endif %}
 
-    <form method="post" action="." class="">
-        {% csrf_token %}
-        <div class="d-flex flex-column w-25 m-lg-5">
-            
-            <label for="nome">usuario</label>
-            <input type="text" name="usuario" id='nome' class="w-25 ">
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}        
+        <form method="post" action="/contas/login/">
+          <label for="id_username">Usuário:</label>
+          <input type="text" name="username" autofocus 
+          autocapitalize="none" autocomplete="username" 
+          maxlength="150" required id="id_username">
+          <label for="id_password">Senha:</label>
+          <input type="password" name="password" autocomplete="current-password"
+          required id="id_password">
+          <input type="submit" value="login"/>
+          <input type="hidden" name="next" value="{{ next }}"/>
+        </form>       
 
-            <label for="descriçao">senha</label>
-            <input type="password" name="senha" id='descriçao' class="w-25">
-
-        </div>
-        <div class="m-lg-5">
-
-            <input type="submit" value="Logar">
-        </div>
-    </form>
 
 </body>
 
