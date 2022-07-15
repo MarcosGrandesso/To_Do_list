@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'todo/css/bootstrap.css' %}" type="text/css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!--bootstrap nav barr-->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand text-info text-opacity-75" href="{% url 'index' %} "> Task List</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <a href="{% url 'taskn' %}">
+                    <button class="btn btn-outline-success" type="submit">New Task</button>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    {% if messages %}
+        {% for mensagem in messages %}
+            <div class="alert alert-danger mt-58" role="alert">
+                {{ mensagem }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" action="." class="">
+        {% csrf_token %}
+        <div class="d-flex flex-column w-25 m-lg-5">
+            
+            <label for="nome">usuario</label>
+            <input type="text" name="usuario" id='nome' class="w-25 ">
+
+            <label for="descriçao">senha</label>
+            <input type="password" name="senha" id='descriçao' class="w-25">
+
+        </div>
+        <div class="m-lg-5">
+
+            <input type="submit" value="Logar">
+        </div>
+    </form>
+
+</body>
+
+</html>

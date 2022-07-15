@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'todo/css/bootstrap.css' %}" type="text/css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!--bootstrap nav barr-->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand text-info text-opacity-75" href="#"> Task List</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <a href="{% url 'login' %}">
+                    <button class="btn btn-outline-success m-3" type="submit">login</button>
+                </a>
+                <a href="{% url 'register' %}">
+                    <button class="btn btn-outline-success m-3" type="submit">Register</button>
+                </a>
+                <a href="{% url 'taskn' %}">
+                    <button class="btn btn-outline-success" type="submit">New Task</button>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex justify-content-center ">
+        <!--bootstrap table-->
+        <table class="table table-dark mt-5 w-75 shadow p-3 mb-5 bg-body rounded">
+            <thead>
+                <tr>
+                    <th scope="col">&nbsp;</th>
+                    <th scope="col">Tarefa</th>
+                    <th scope="col">Prioridade</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Fotinha</th>
+                </tr>
+                <!--aqui vai o For-->
+                {% for valor in lista %}
+                <tr>
+                    <th scope="row">&nbsp;</th>
+                    <td >{{ valor.nome }}</td>
+                    <td >{{ valor.prioridade }}</td>
+                    <td >{{ valor.descriçao }}</td>
+                    <td ><img src="{{ valor.imagem }}" alt="" class="h-25 w-25"></td>
+                </tr>
+                {% endfor %}
+            </thead>
+    </div>
+    <div></div>
+
+
+    
+    <!--Footer -->
+
+
+</body>
+
+</html>
